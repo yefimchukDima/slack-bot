@@ -5,6 +5,6 @@ import { from, Observable, of } from 'rxjs';
 export class ApiGitlabService {
 
   getHello(): string {
-    return 'Hello World!';
+    return 'dima';
   }
 }
