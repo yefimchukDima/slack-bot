@@ -6,28 +6,28 @@ import {
   Get,
   Patch,
   Post,
-  Query,
+  Query, RawBodyRequest, Req, Res,
   UnprocessableEntityException,
   UploadedFile,
   UseGuards,
   UseInterceptors,
   UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
+  ValidationPipe
+} from "@nestjs/common";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 import { ApiGitlabService } from "./api-gitlab.service";
 
 
 @ApiTags('console')
-@Controller('api/v1/console')
+@Controller('api/')
 
 export class ApiGitlabController {
   constructor(private readonly _service: ApiGitlabService) {}
 
   @ApiOperation({ summary: 'PSLoadSheddingUtilityList' })
-  @Get('/load-shedding-utility-list')
-  async loadSheddingUtilityList(@Body() body: any) {
-    return this._service.getHello();
+  @Post('/gitlab')
+  async loadSheddingUtilityList(@Body() body: any, @Res() res,@Req() req: RawBodyRequest<Request> ) {
+    return this._service.getHello(res, req);
   }
 
 
